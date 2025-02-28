@@ -2,9 +2,6 @@ const config = require("./config.json"); // Membaca konfigurasi dari config.json
 const ethers = require("ethers");
 const colors = require("colors");
 const cfonts = require("cfonts");
-const displayHeader = require("../src/banner.js");
-
-displayHeader();
 
 const RPC_URL = "https://testnet-rpc.monad.xyz";
 const EXPLORER_URL = "https://testnet.monadexplorer.com/tx/";
