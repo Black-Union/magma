@@ -1,4 +1,4 @@
-const config = require("./config.json"); // Membaca konfigurasi dari config.json
+const config = require("./config.json");
 const ethers = require("ethers");
 const colors = require("colors");
 const cfonts = require("cfonts");
@@ -6,7 +6,7 @@ const cfonts = require("cfonts");
 const RPC_URL = "https://testnet-rpc.monad.xyz";
 const EXPLORER_URL = "https://testnet.monadexplorer.com/tx/";
 const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
-const PRIVATE_KEY = config.privateKey; // Menggunakan private key dari config.json
+const PRIVATE_KEY = config.privateKey;
 const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
 
 const contractAddress = "0x2c9C959516e9AAEdB2C748224a41249202ca8BE7";
@@ -17,7 +17,7 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function stakeMON() {
     try {
-        const stakeAmount = ethers.utils.parseEther(config.stakeAmount); // Menggunakan stakeAmount dari config.json
+        const stakeAmount = ethers.utils.parseEther(config.stakeAmount);
         console.log(`🪫  Starting Magma ⏩⏩⏩⏩`.blue);
         console.log(` `);
         console.log(`🔄 Magma stake: ${ethers.utils.formatEther(stakeAmount)} MON`.magenta);
@@ -32,7 +32,7 @@ async function stakeMON() {
         console.log(`🔄 STAKE`.green);
         const txResponse = await wallet.sendTransaction(tx);
         console.log(`➡️  Hash: ${txResponse.hash}`.yellow);
-		console.log(`🔄 Wait Confirmation`.green);
+        console.log(`🔄 Wait Confirmation`.green);
         await txResponse.wait();
         console.log(`✅ Stake DONE`.green);
 
@@ -45,7 +45,7 @@ async function stakeMON() {
 
 async function unstakeGMON() {
     try {
-        const amountToUnstake = ethers.utils.parseEther(config.unstakeAmount); // Menggunakan unstakeAmount dari config.json
+        const amountToUnstake = ethers.utils.parseEther(config.unstakeAmount);
         console.log(`🔄 Unstake: ${ethers.utils.formatEther(amountToUnstake)} gMON`.green);
 
         const functionSelector = "0x6fed1ea7";
@@ -61,7 +61,7 @@ async function unstakeGMON() {
         console.log(`🔄 Unstake`.red);
         const txResponse = await wallet.sendTransaction(tx);
         console.log(`➡️ Hash: ${txResponse.hash}`.yellow);
-		console.log(`🔄 Wait Confirmation`.green);
+        console.log(`🔄 Wait Confirmation`.green);
         await txResponse.wait();
         console.log(`✅ Unstake DONE`.green);
     } catch (error) {
